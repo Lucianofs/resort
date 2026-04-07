@@ -35,10 +35,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Se usar Vite, mude 'build' para 'dist' abaixo:
-          path: './build' 
+          path: './dist' 
 
   deploy:
-    needs: build
+    needs: dist
     runs-on: ubuntu-latest
     environment:
       name: github-pages
