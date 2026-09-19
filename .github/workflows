@@ -1,1 +1,73 @@
+name: Deploy React Site
 
+on:
+
+push:
+
+branches: ["main"] # Executa toda vez que você salvar no main
+
+permissions :
+
+contents: read
+
+pages: write
+
+id-token: write
+
+jobs:
+
+build:
+
+runs-on: ubuntu-latest
+
+steps:
+
+name: Checkout
+
+uses: actions/ checkout@v4
+
+- name: Setup Node
+
+uses: actions /setup- node@v4with:
+
+node-version: 20
+
+- name: Install dependenciesrun: npm install
+
+- name: Build
+
+cache: 'npm'
+
+run: npm run build
+
+- name: Setup Pages
+
+uses: actions / configure-pages@v4
+
+name: Upload artifact
+
+uses: actions/upload-pages-artifact@v3
+
+deploy:
+
+With:
+
+# Se usar Vite, mude 'build' para 'dist' abaixo :path: './dist'
+
+needs: dist
+
+runs-on: ubuntu-latest
+
+environment:
+
+name: github-pages
+
+url:
+
+steps:
+
+steps. deployment. outputs. page_url }}
+
+- name: Deploy to GitHub Pagesid: deployment
+
+uses: actions / deploy-pages@v4
