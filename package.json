@@ -1,0 +1,36 @@
+{
+"name": "hotel-ig",
+
+"private": true,
+
+"version" : "0.0.0",
+
+"type" : "module",
+
+"scripts" :
+
+}
+
+"dev": "vite",
+
+"build": "vite build"
+
+"preview" "vite preview"
+
+"dependencies" ; {
+
+"react": "A18.2.0",
+
+"react - dom" : "A18.2.0"
+
+},
+
+"devDependencies" :{
+
+"@types /react": "A18.2.66",
+"@types/react -dom" : "^18.2.22",
+"@vitejs/plugin- react" : "^4. 2.1" ,
+"vite": "A5.2.0"
+
+}
+}
