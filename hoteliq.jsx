@@ -1,17 +1,16 @@
-import { useState, useEffect, useRef } from "react";
-import {
+const { useState, useEffect, useRef } = React;
+const { 
   AreaChart, Area, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart,
-  Radar, PolarGrid, PolarAngleAxis, Legend
-} from "recharts";
-import {
-  Hotel, BarChart2, TrendingUp, Brain, Bell, FileText, Plus, Edit2,
-  Trash2, Menu, X, AlertTriangle, CheckCircle, ArrowUp, ArrowDown,
-  Globe, Download, Eye, DollarSign, Activity, Calendar, Star, LogOut,
-  Instagram, MessageSquare, Send, Building2, Target, Users, Zap,
-  MapPin, TrendingDown, RefreshCw, Award, Search, Shield, ChevronDown,
-  Percent, LayoutDashboard, Settings, ExternalLink, Layers
-} from "lucide-react";
+  Radar, PolarGrid, PolarAngleAxis, Legend 
+} = Recharts;
+// Adaptação para os ícones funcionarem direto no navegador
+const LucideIcon = ({ name, size = 16, color = "currentColor" }) => {
+  const IconComponent = lucide[name];
+  if (!IconComponent) return null;
+  return <IconComponent size={size} color={color} />;
+};
+
 
 const C = {
   bg0:"#060910",bg1:"#0C1220",bg2:"#111827",bg3:"#182033",
