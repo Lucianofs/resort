@@ -1067,3 +1067,6 @@ function HotelIQ(){
   if(!loggedIn) return <AuthScreen onLogin={login}/>;
   return <MainApp user={user} hotels={hotels} setHotels={setHotels} currentHotel={currentHotel} setCurrentHotel={setCurrentHotel} section={section} setSection={setSection} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} alerts={alerts} setAlerts={setAlerts} onLogout={logout}/>;
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HotelIQ />);
