@@ -5,15 +5,13 @@ const {
   Radar, PolarGrid, PolarAngleAxis, Legend 
 } = Recharts;
 
-// Correção estrutural para os ícones funcionarem direto no celular
+// Adaptação dos ícones Lucide para rodar sem compilação
 const LucideIcon = ({ name, size = 16, color = "currentColor" }) => {
-  // Converte a primeira letra para maiúscula para bater com o padrão da biblioteca
   const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
   const IconComponent = lucide[formattedName] || lucide[name] || lucide.HelpCircle;
   return React.createElement(IconComponent, { size, color });
 };
 
-// Criando atalhos para os ícones serem usados como componentes normais no código
 const Hotel = (p) => <LucideIcon name="Hotel" {...p} />;
 const DollarSign = (p) => <LucideIcon name="DollarSign" {...p} />;
 const Activity = (p) => <LucideIcon name="Activity" {...p} />;
@@ -54,14 +52,9 @@ const C = {
 };
 
 const FONTS = `
-  @import url('https://googleapis.com');
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body, #root { background: ${C.bg0}; font-family: 'DM Sans', sans-serif; color: ${C.text}; min-height: 100vh; }
-  h1,h2,h3 { font-family: 'Cormorant Garamond', serif; }
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: ${C.bg1}; }
-  ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 2px; }
-  input,textarea,select { background: ${C.bg3}; border: 1px solid ${C.border}; color: ${C.text}; font-family: 'DM Sans', sans-serif; padding: 8px 12px; border-radius: 8px; width: 100%; font-size: 14px; outline: none; }
+  body, #root { background: ${C.bg0}; font-family: sans-serif; color: ${C.text}; min-height: 100vh; }
+  input,textarea,select { background: ${C.bg3}; border: 1px solid ${C.border}; color: ${C.text}; padding: 8px 12px; border-radius: 8px; width: 100%; font-size: 14px; outline: none; }
   input:focus,textarea:focus,select:focus { border-color: ${C.gold}; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
@@ -120,8 +113,6 @@ const DEF_ALERTS = [
 ];
 
 const fmtR = (n) => n>=1e6?`R$${(n/1e6).toFixed(1)}M`:n>=1000?`R$${(n/1000).toFixed(0)}K`:`R$${n}`;
-const alertColor = {ok:C.ok,warn:C.warn,danger:C.danger,info:C.info};
-const alertIcon = {ok:<CheckCircle size={15}/>,warn:<AlertTriangle size={15}/>,danger:<AlertTriangle size={15}/>,info:<Zap size={15}/>};
 
 const Card = ({children,style={}})=>(
   <div style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:14,padding:"20px 22px",...style}}>{children}</div>
@@ -138,7 +129,7 @@ const KPI = ({label,value,sub,icon:Icon,trend,color=C.gold})=>(
       </div>
       <span style={{fontSize:12,color:C.muted,fontWeight:500}}>{label}</span>
     </div>
-    <div style={{fontSize:26,fontWeight:700,fontFamily:"Cormorant Garamond, serif",color:C.text,lineHeight:1}}>{value}</div>
+    <div style={{fontSize:26,fontWeight:700,color:C.text,lineHeight:1}}>{value}</div>
     {sub&&<div style={{marginTop:6,display:"flex",alignItems:"center",gap:6}}>
       {trend!=null&&(trend>=0?<ArrowUp size={11} color={C.ok}/>:<ArrowDown size={11} color={C.danger}/>)}
       <span style={{fontSize:11,color:trend!=null?(trend>=0?C.ok:C.danger):C.muted}}>{sub}</span>
@@ -180,3 +171,17 @@ function AuthScreen({onLogin}){
       <style>{FONTS}</style>
       <div style={{width:"100%",maxWidth:420,animation:"fadeIn .5s ease"}}>
         <div style={{textAlign:"center",marginBottom:36}}>
+          <div style={{width:64,height:64,borderRadius:18,background:C.goldD,border:`1px solid ${C.gold}40`,display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",color:C.gold}}>
+            <Hotel size={28}/>
+          </div>
+          <h1 style={{fontSize:38,fontWeight:700,color:C.text,letterSpacing:1}}>HotelIQ</h1>
+          <p style={{color:C.muted,fontSize:13,marginTop:4}}>Inteligência estratégica para hotelaria</p>
+        </div>
+        <Card>
+          <form onSubmit={submit}>
+            <div style={{marginBottom:16}}>
+              <label style={{fontSize:12,color:C.muted,fontWeight:500,display:"block",marginBottom:6}}>E-MAIL</label>
+              <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="seu@email.com"/>
+            </div>
+            <div style={{marginBottom:24}}>
+              <label style={{fontSize:12,color:C.muted,fontWeight:500,display:"block",marginBottom:6}}>SENHA</label>
