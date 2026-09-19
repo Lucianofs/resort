@@ -1030,7 +1030,7 @@ function MainApp({user,hotels,setHotels,currentHotel,setCurrentHotel,section,set
 }
 
 // ── ROOT ──────────────────────────────────────────────────────────────────
-export default function HotelIQ(){
+function HotelIQ(){
   const [loggedIn,setLoggedIn]=useState(false);
   const [user,setUser]=useState(null);
   const [hotels,setHotels]=useState(DEF_HOTELS);
