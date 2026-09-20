@@ -5,40 +5,49 @@ const {
   Radar, PolarGrid, PolarAngleAxis, Legend 
 } = Recharts;
 
+// Nova função leve de ícones que não trava o navegador do celular
 const LucideIcon = ({ name, size = 16, color = "currentColor" }) => {
-  const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-  const IconComponent = lucide[formattedName] || lucide[name] || lucide.HelpCircle;
-  return React.createElement(IconComponent, { size, color });
+  useEffect(() => {
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }, [name]);
+  
+  // Transforma o nome camelCase do lucide (ex: DollarSign) para o padrão de traço (dollar-sign)
+  const kebabName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+  return <i data-lucide={kebabName} style={{ width: size, height: size, color: color, display: 'inline-block' }}></i>;
 };
 
-const Hotel = (p) => <LucideIcon name="Hotel" {...p} />;
-const DollarSign = (p) => <LucideIcon name="DollarSign" {...p} />;
-const Activity = (p) => <LucideIcon name="Activity" {...p} />;
-const Calendar = (p) => <LucideIcon name="Calendar" {...p} />;
-const Award = (p) => <LucideIcon name="Award" {...p} />;
-const Target = (p) => <LucideIcon name="Target" {...p} />;
-const Users = (p) => <LucideIcon name="Users" {...p} />;
-const ArrowUp = (p) => <LucideIcon name="ArrowUp" {...p} />;
-const ArrowDown = (p) => <LucideIcon name="ArrowDown" {...p} />;
-const AlertTriangle = (p) => <LucideIcon name="AlertTriangle" {...p} />;
-const CheckCircle = (p) => <LucideIcon name="CheckCircle" {...p} />;
-const Zap = (p) => <LucideIcon name="Zap" {...p} />;
-const LayoutDashboard = (p) => <LucideIcon name="LayoutDashboard" {...p} />;
-const Building2 = (p) => <LucideIcon name="Building2" {...p} />;
-const Plus = (p) => <LucideIcon name="Plus" {...p} />;
-const MapPin = (p) => <LucideIcon name="MapPin" {...p} />;
-const Edit2 = (p) => <LucideIcon name="Edit2" {...p} />;
-const Trash2 = (p) => <LucideIcon name="Trash2" {...p} />;
-const X = (p) => <LucideIcon name="X" {...p} />;
-const TrendingUp = (p) => <LucideIcon name="TrendingUp" {...p} />;
-const Search = (p) => <LucideIcon name="Search" {...p} />;
-const Layers = (p) => <LucideIcon name="Layers" {...p} />;
-const Bell = (p) => <LucideIcon name="Bell" {...p} />;
-const FileText = (p) => <LucideIcon name="FileText" {...p} />;
-const RefreshCw = (p) => <LucideIcon name="RefreshCw" {...p} />;
-const LogOut = (p) => <LucideIcon name="LogOut" {...p} />;
-const Menu = (p) => <LucideIcon name="Menu" {...p} />;
-const Brain = (p) => <LucideIcon name="Brain" {...p} />;
+// Atalhos limpos para os componentes de ícones
+const Hotel = (p) => <LucideIcon name="hotel" {...p} />;
+const DollarSign = (p) => <LucideIcon name="dollar-sign" {...p} />;
+const Activity = (p) => <LucideIcon name="activity" {...p} />;
+const Calendar = (p) => <LucideIcon name="calendar" {...p} />;
+const Award = (p) => <LucideIcon name="award" {...p} />;
+const Target = (p) => <LucideIcon name="target" {...p} />;
+const Users = (p) => <LucideIcon name="users" {...p} />;
+const ArrowUp = (p) => <LucideIcon name="arrow-up" {...p} />;
+const ArrowDown = (p) => <LucideIcon name="arrow-down" {...p} />;
+const AlertTriangle = (p) => <LucideIcon name="alert-triangle" {...p} />;
+const CheckCircle = (p) => <LucideIcon name="check-circle" {...p} />;
+const Zap = (p) => <LucideIcon name="zap" {...p} />;
+const LayoutDashboard = (p) => <LucideIcon name="layout-dashboard" {...p} />;
+const Building2 = (p) => <LucideIcon name="building-2" {...p} />;
+const Plus = (p) => <LucideIcon name="plus" {...p} />;
+const MapPin = (p) => <LucideIcon name="map-pin" {...p} />;
+const Edit2 = (p) => <LucideIcon name="edit-2" {...p} />;
+const Trash2 = (p) => <LucideIcon name="trash-2" {...p} />;
+const X = (p) => <LucideIcon name="x" {...p} />;
+const TrendingUp = (p) => <LucideIcon name="trending-up" {...p} />;
+const Search = (p) => <LucideIcon name="search" {...p} />;
+const Layers = (p) => <LucideIcon name="layers" {...p} />;
+const Bell = (p) => <LucideIcon name="bell" {...p} />;
+const FileText = (p) => <LucideIcon name="file-text" {...p} />;
+const RefreshCw = (p) => <LucideIcon name="refresh-cw" {...p} />;
+const LogOut = (p) => <LucideIcon name="log-out" {...p} />;
+const Menu = (p) => <LucideIcon name="menu" {...p} />;
+const Brain = (p) => <LucideIcon name="brain" {...p} />;
+
 
 const C = {
   bg0:"#060910",bg1:"#0C1220",bg2:"#111827",bg3:"#182033",
