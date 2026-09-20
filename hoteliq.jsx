@@ -179,7 +179,7 @@ function HotelIQ(){
   const [currentHotel]=useState(DEF_HOTELS[0]);
 
   const login=(email)=>{
-    setUser({name:email.split("@")[0],email});
+    setUser({name:email.split("@"),email});
     setLoggedIn(true);
   };
 
