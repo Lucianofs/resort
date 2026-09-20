@@ -187,5 +187,6 @@ function HotelIQ(){
   return <MainApp user={user} currentHotel={currentHotel} onLogout={()=>setLoggedIn(false)}/>;
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<HotelIQ />);
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(HotelIQ));
+    
